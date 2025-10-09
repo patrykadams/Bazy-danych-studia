@@ -90,3 +90,16 @@ select hire_date from employees;
 #4 
 select emp_id from employees
 where hire_date like '01%' and salary+allowance >= 7000;
+
+
+
+
+
+#09.10.2025
+
+# 1
+SELECT 
+
+
+
+
