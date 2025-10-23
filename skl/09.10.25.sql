@@ -88,6 +88,52 @@ Select Max(salary), Min(salary), sum(salary), avg(salary) from employees;
 
 #2
 Select dep_id, max(salary), min(salary), avg(salary) from employees
-
+where dep_id is not null
 group by dep_id
 order by dep_id;
+
+
+
+
+
+
+
+#ćwiczenia 3
+
+#operatory zbiorowe
+
+#1
+SELECT
+  nazwisko,
+  id_dzialu
+FROM
+  (
+    SELECT
+      nazwisko,
+      id_dzialu,
+      1 AS kolejnosc
+    FROM
+      pracownicy
+    WHERE
+      id_dzialu = 10
+    UNION
+    SELECT
+      nazwisko,
+      id_dzialu,
+      2 AS kolejnosc
+    FROM
+      pracownicy
+    WHERE
+      id_dzialu = 50
+    UNION
+    SELECT
+      nazwisko,
+      id_dzialu,
+      3 AS kolejnosc
+    FROM
+      pracownicy
+    WHERE
+      id_dzialu = 20
+  )
+ORDER BY
+  kolejnosc;
