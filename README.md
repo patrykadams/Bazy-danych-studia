@@ -1,6 +1,7 @@
-🗄️ Bazy Danych — Wprowadzenie do SQL
-Katedra Technologii Informacyjnych, Uniwersytet Ekonomiczny w Poznaniu
+.
 
+🗄️ Bazy Danych — Uniwersytet Ekonomiczny w Poznaniu
+🎓 Katedra Technologii Informacyjnych
 Repozytorium zawiera materiały, przykłady i ćwiczenia z przedmiotu Bazy Danych, prowadzonego na III roku Informatyki i Ekonometrii. Celem zajęć jest zapoznanie studentów z podstawami relacyjnych baz danych oraz języka SQL (Structured Query Language).
 
 🎯 Cele przedmiotu
@@ -12,187 +13,273 @@ Nabycie umiejętności formułowania zapytań SQL i analizy danych.
 
 Zrozumienie podstawowych operacji: selekcji, projekcji, łączenia danych i sortowania wyników.
 
+
+
+
+
 Nauka podstawowych elementów języków DDL, DML, DCL oraz zarządzania transakcjami.
 
+
 🧩 Zakres materiału
-Wprowadzenie do baz danych
-Pojęcie i rola baz danych.
+I. Wprowadzenie do baz danych
 
-Modele danych:
+Modele danych : Hierarchiczny , Sieciowy , Relacyjny , Obiektowy , Nierelacyjny (NoSQL).
 
-Hierarchiczny
 
-Sieciowy
 
-Relacyjny
 
-Obiektowy
 
-Nierelacyjny (NoSQL)
 
-Relacyjny model danych:
+Model Relacyjny : Dane przechowywane w tabelach (relacjach). Struktura: wiersze (rekordy) i kolumny (atrybuty).
 
-Dane przechowywane w tabelach (relacjach).
 
-Struktura: wiersze (rekordy) i kolumny (atrybuty).
 
-Klucze główne i obce, integralność danych.
 
-Język SQL — Podstawy
-SQL jako język deklaratywny.
 
-Składnia zapytań i pojęcia składniowe:
+Połączenie do BD: Parametry połączenia do bazy venusdb.ue.poznan przez serwer kti-lab1.ue.poznan.pl na porcie 1521.
 
-Słowa kluczowe (SELECT, FROM, WHERE).
 
-Klauzule i polecenia.
 
-Aliasy, operatory i warunki logiczne.
+
+
+II. Język SQL — Podstawy
+
+SQL (Structured Query Language): Język deklaratywny używany do definiowania, pobierania i manipulowania danymi.
+
+
+
+Pojęcia składniowe:
+
+Słowo kluczowe (SELECT, FROM).
+
+Klauzula (np. SELECT last_name).
+
+Polecenie (kombinacja klauzul zakończona średnikiem).
+
 
 Typy poleceń SQL:
 
-DQL – zapytania (SELECT).
 
-DML – manipulacja danymi (INSERT, UPDATE, DELETE, MERGE).
+DQL: SELECT (zapytania/pobieranie danych).
 
-DDL – definicja struktury (CREATE, ALTER, DROP).
 
-DCL – kontrola dostępu (GRANT, REVOKE).
+DML: INSERT, UPDATE, DELETE, MERGE (manipulacja danymi).
 
-TCL – zarządzanie transakcjami (COMMIT, ROLLBACK, SAVEPOINT).
 
-Podstawowe operacje:
+DDL: CREATE, ALTER, DROP, RENAME, TRUNCATE (definicja struktury).
 
-Selekcja (SELECT…WHERE) – wybór wierszy.
 
-Projekcja (SELECT kolumny) – wybór kolumn.
+DCL: GRANT, REVOKE (kontrola dostępu).
 
-Sortowanie (ORDER BY).
 
-Filtrowanie przy użyciu operatorów:
+TCL: COMMIT, ROLLBACK, SAVEPOINT (zarządzanie transakcjami).
 
-Porównania: =,>,<,BETWEEN,IN,LIKE,IS NULL.
 
-Logicznych: AND,OR,NOT.
+Podstawowe operacje SELECT:
 
-Operatory arytmetyczne i konkatenacja tekstu.
 
-🧩 Język SQL — Funkcje i Grupowanie Danych
-Funkcje SQL
+Projekcja: Wybór kolumn (np. SELECT column).
 
-Cel: Wykonanie operacji na argumentach i zwrócenie pojedynczej wartości.
 
 
-Typy funkcji:
+Selekcja: Wybór wierszy (WHERE condition(s)).
 
 
-Jednowierszowe: Przyjmują jedną wartość dla wiersza, zwracają jedną wartość dla każdego wiersza.
 
+Sortowanie: ORDER BY {column|expression|alias} [ASC|DESC].
 
-Mogą być użyte w klauzulach SELECT, WHERE, ORDER BY.
 
-Mogą być zagnieżdżane.
 
+Operatory w WHERE: =, >, <, BETWEEN, IN, LIKE (%, _), IS NULL.
 
-Grupowe (agregujące): Przyjmują jedną wartość dla grupy wierszy, dając jeden rezultat dla każdej grupy.
 
 
 
-Wartość Pusta (NULL):
 
-Pole tabeli nie zawiera żadnej wartości.
 
-To nie 0 ani spacja.
+Operatory logiczne: AND, OR, NOT.
 
-Jeśli wartość kolumny w wyrażeniu arytmetycznym jest NULL, wartość wyrażenia jest NULL.
 
+Aliasy: Dla kolumn (AS "Nazwisko") i tabel (FROM employees e).
 
-NVL(expr1,expr2): Konwertuje expr1 z NULL na określoną wartość expr2 (np. 0).
 
-Przykłady Funkcji Jednowierszowych
+III. Język SQL — Funkcje i Grupowanie Danych
 
-Znakowe: UPPER (duże litery), LOWER (małe litery), LENGTH (długość), SUBSTR (podciąg).
+Funkcje:
 
 
+Jednowierszowe : Przetwarzają każdy wiersz , zwracają jedną wartość dla wiersza. Mogą być użyte w SELECT, WHERE, ORDER BY.
 
 
-Numeryczne: ROUND (zaokrąglanie), TRUNC (obcinanie), MOD (reszta z dzielenia).
 
 
 
-Daty: SYSDATE (aktualna data), MONTHS_BETWEEN (różnica miesięcy), ADD_MONTHS (dodawanie miesięcy), NEXT_DAY (następny dzień tygodnia), LAST_DAY (ostatni dzień miesiąca).
+Grupowe (agregujące) : Przetwarzają zbiory wierszy, dając jeden rezultat dla każdej grupy. Ignorują wartości puste, z wyjątkiem COUNT(*).
 
 
-Daty są przechowywane jako liczby, możliwe są operacje arytmetyczne (np. date+number dodaje dni, date−date daje liczbę dni).
 
 
-Konwersja Typów:
+Wartość Pusta (NULL) : Nie jest to 0 ani spacja. W wyrażeniu arytmetycznym powoduje, że rezultat jest NULL.
 
 
-TO_CHAR: Konwersja liczby lub daty na VARCHAR2 (tekst).
 
 
-TO_NUMBER: Konwersja łańcucha znaków na wartość liczbową.
+Funkcja NVL(expr1, expr2): Konwertuje expr1 z NULL na określoną wartość expr2.
 
 
-TO_DATE: Konwersja łańcucha znaków na wartość daty.
+Przykłady Funkcji Jednowierszowych:
 
-Warunkowe:
 
-Funkcja DECODE.
+Znakowe: UPPER, LOWER, LENGTH, SUBSTR.
 
-Wyrażenie CASE.
 
 
-DUAL: Tabela używana do wyświetlenia wartości stałej lub wyrażenia, które nie jest oparte na tabeli.
 
-Grupowanie Danych
-Funkcje Grupowe
-Przetwarzają zbiory wierszy, dając jeden rezultat dla każdej grupy (lub dla całej tabeli).
+Numeryczne: ROUND, TRUNC, MOD.
 
-Wszystkie funkcje grupowe z wyjątkiem COUNT(∗) ignorują wartości puste.
 
 
-Składnia: DISTINCT (nie uwzględnia duplikatów), ALL (uwzględnia duplikaty, domyślnie).
+Daty: SYSDATE , MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY.
 
-Główne Funkcje:
 
 
-COUNT(…): Liczba wierszy (np. COUNT(∗) liczy wszystkie, COUNT(kolumna) liczy tylko nie-NULL).
+Konwersja Typów: TO_CHAR (na tekst) , TO_NUMBER (na liczbę) , TO_DATE (na datę).
 
 
-AVG(expr): Wartość średnia.
 
 
-SUM(expr): Suma wartości.
+Warunkowe: Funkcja DECODE lub wyrażenie CASE.
 
 
-MAX(expr): Wartość maksymalna.
 
+Tabela DUAL: Używana do wyrażeń niezwiązanych z tabelą (np. SELECT SYSDATE FROM dual).
 
-MIN(expr): Wartość minimalna.
 
 
-STDDEV(expr): Odchylenie standardowe.
+Funkcje Grupowe: COUNT, AVG, SUM, MAX, MIN, STDDEV, VARIANCE.
 
 
-VARIANCE(expr): Wariancja.
 
-Klauzula GROUP BY
-Dzieli wiersze tabeli na mniejsze grupy na podstawie wartości w wyspecyfikowanej liście kolumn.
 
+Klauzula GROUP BY : Dzieli wiersze na grupy. Kolumny nieagregowane w SELECT muszą być w GROUP BY.
 
-Zasada: Jeżeli SELECT zawiera funkcję grupową, kolumny nieagregowane muszą znaleźć się w klauzuli GROUP BY.
 
 
-Ograniczenia: W GROUP BY nie można używać aliasów kolumn.
 
-Klauzula HAVING
-Wyodrębnia grupy spełniające określony warunek.
+Klauzula HAVING : Wyodrębnia grupy spełniające warunek. Stosowana po GROUP BY.
 
 
-Kolejność: Stosowana po klauzuli GROUP BY (w przeciwieństwie do WHERE, która filtruje wiersze przed grupowaniem).
 
+IV. Łączenie tabel i Operatory zbiorowe
 
+Operacja złączenia (JOIN) : Pobieranie danych z więcej niż jednej tabeli.
 
-Warunek: Wyrażenie warunkowe, które pozwala wyodrębnić grupy, dla których przyjmuje wartość TRUE.
+
+
+Typy złączeń:
+
+
+Iloczyn kartezjański (CROSS JOIN / FROM table1, table2).
+
+
+
+
+Złączenie równościowe (INNER JOIN ON/WHERE e.id = d.id).
+
+
+
+
+Złączenie nierównościowe (np. BETWEEN - często używane do JOB_GRADES).
+
+
+
+Złączenia zewnętrzne: Lewostronne (LEFT OUTER JOIN), Prawostronne (RIGHT OUTER JOIN), Pełne (FULL OUTER JOIN).
+
+
+
+Samozłączenie (SELF JOIN): Tabela łączona sama ze sobą.
+
+
+
+Operatory zbiorowe : Łączenie rezultatów zapytań składowych.
+
+
+
+UNION: Wszystkie wiersze z obu zapytań, bez duplikatów.
+
+
+UNION ALL: Wszystkie wiersze, włącznie z duplikatami.
+
+
+INTERSECT: Wiersze wspólne dla obu zapytań.
+
+
+MINUS: Wiersze z pierwszego zapytania, których nie ma w drugim.
+
+
+Wytyczne: Klauzule SELECT muszą być zgodne pod względem liczby elementów i ich typów danych. ORDER BY tylko na końcu.
+
+
+V. Podzapytania (Subqueries)
+
+Podzapytanie: Polecenie SELECT zagnieżdżone w klauzuli innego zapytania. Używane do uzupełnienia głównego zapytania.
+
+
+
+
+
+Typy podzapytań:
+
+
+
+Jednowierszowe/Skalarne : Zwracają dokładnie jedną wartość. Używają operatorów =, >, <.
+
+
+
+
+
+
+Wielowierszowe: Zwracają wiele wierszy. Używają operatorów [NOT] IN, ANY, ALL.
+
+
+
+
+
+
+Wielokolumnowe: Zwracają więcej niż jedną kolumnę. Używają złożonej klauzuli WHERE.
+
+
+
+
+
+Podział (korelacja):
+
+
+
+Nieskorelowane : Wykonywane jeden raz przed głównym zapytaniem. Wynik jest niezależny od wierszy przetwarzanych w zapytaniu głównym.
+
+
+
+
+
+
+Skorelowane : Wykonywane jeden raz dla każdego wiersza kandydującego w zapytaniu głównym. Wynik zależy od wartości w wierszu przetwarzanym przez zapytanie główne.
+
+
+
+
+
+
+Operator [NOT] EXISTS:
+
+
+
+
+EXISTS: Prawdziwy, jeśli podzapytanie zwraca co najmniej jeden wiersz.
+
+
+
+NOT EXISTS: Prawdziwy, jeśli podzapytanie nie zwraca żadnych wierszy.
+
+
+Podzapytanie może zwracać stałą wartość (np. 'X') dla lepszej wydajności
